@@ -1,0 +1,5 @@
+host = "localhost"
+user = "postgres"
+password = "RooT"
+db_name = "railway"
+port = "5432"

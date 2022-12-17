@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link type="text/css" href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <meta charset="UTF-8">
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Ты по-моему что-то перепутал</title>
+    {% endif %}
+</head>
+<body>
+<ul class="mainmenu">
+    {% for m in menu %}
+    <li><a href="{{ m.url }}">{{ m.name }}</a></li>
+    {% endfor %}
+</ul>
+{% if title %}
+<h1>{{ title }}</h1>
+{% else %}
+<h1>Ты по-моему что-то перепутал</h1>
+{% endif %}
+
+<form action="/direction" method="post" class="form-contact">
+    <p><label>Введи номер ветки следования, который хотите удалить: </label> <input type="text" name="num_dir" value=""
+                                                                                    required>
+    </p>
+    <p><input type="submit" name="button" value="Удалить"></p>
+</form>
+
+<form action="/direction" method="post" class="form-contact">
+    Для добавления ветки следования введите:
+    <p><label>Станция отбытия: </label> <input type="text" name="start" value="" required>
+    <p><label>Станция прибытия: </label> <input type="text" name="finish" value="" required>
+    <p><label>Номер ветки: </label> <input type="text" name="num_branch" value="" required>
+    </p>
+    <p><input type="submit" name="button" value="Добавить"></p>
+</form>
+
+<h1>Количество направлений следования: {{ num_dir }}</h1>
+
+{% for dir in all_dir %}
+Номер направления следования: {{ dir.id }} <br>
+Станция отбытия: {{ dir.start }} -> Станция прибытия: {{ dir.finish }} <br>
+Номер ветки: {{ dir.branch }} <br>
+<hr>
+{% endfor %}
+
+</body>
+</html>

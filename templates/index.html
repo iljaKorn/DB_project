@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link type="text/css" href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <meta charset="UTF-8">
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Ты по-моему что-то перепутал</title>
+    {% endif %}
+</head>
+<body>
+<ul class="mainmenu">
+    {% for m in menu %}
+    <li><a href="{{ m.url }}">{{ m.name }}</a></li>
+    {% endfor %}
+</ul>
+    {% if title %}
+    <h1>{{ title }}</h1>
+    {% else %}
+    <h1>Ты по-моему что-то перепутал</h1>
+    {% endif %}
+</body>
+</html>

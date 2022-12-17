@@ -1,0 +1,54 @@
+# from flask import Flask, render_template, redirect, url_for, request
+# from flask_sqlalchemy import SQLAlchemy
+#
+# app = Flask(__name__)
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:RooT@localhost/railway'
+# db = SQLAlchemy(app)
+#
+#
+# class Station(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(1024), nullable=False)
+#     type = db.Column(db.String(1024), nullable=False)
+#
+#     def __init__(self, name, type):
+#         self.name = name
+#         self.type = type
+#
+#
+# class Travel_direction(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     path = db.Column(db.Integer, nullable=False)
+#
+#     start_station_id = db.Column(db.Integer, db.ForeighKey('station.id'), nullable=False)
+#     start_station = db.relationship('Station', backref=db.backref('start_stations', lazy=True))
+#
+#     finish_station_id = db.Column(db.Integer, db.ForeighKey('station.id'), nullable=False)
+#     finish_station = db.relationship('Station', backref=db.backref('finish_stations', lazy=True))
+#
+#
+# db.create_all()
+#
+#
+# @app.route('/', methods=['GET'])
+# def hello_world():
+#     return render_template('index.html')
+#
+#
+# @app.route('/main', methods=['GET'])
+# def main():
+#     return render_template('main.html', messages=Station.query.all())
+#
+#
+# @app.route('/add_message', methods=['POST'])
+# def add_message():
+#     name = request.form['name']
+#     type = request.form['type']
+#
+#     db.session.add(Station(name, type))
+#
+#     return redirect(url_for('main'))
+#
+#
+# if __name__ == '__main__':
+#     app.run(debug=True)

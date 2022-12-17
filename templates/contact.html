@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link type="text/css" href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+<ul class="mainmenu">
+    {% for m in menu %}
+    <li><a href="{{ m.url }}">{{ m.name }}</a></li>
+    {% endfor %}
+</ul>
+<h1>{{ title }}</h1>
+<form action="/contact" method="post" class="form-contact">
+    <p><label>Имя: </label> <input type="text" name="username" value="" required></p>
+    <p><label>Email: </label> <input type="text" name="email" value="" required></p>
+    <p><label>Сообщение: </label></p>
+    <p><textarea name="message" rows="7" cols="40"></textarea></p>
+    <p><input type="submit" value="Отправить"></p>
+</form>
+</body>
+</html>
